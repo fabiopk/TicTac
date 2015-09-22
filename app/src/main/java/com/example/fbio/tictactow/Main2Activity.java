@@ -66,7 +66,7 @@ public class Main2Activity extends Activity {
         vamosmudar = (EditText) findViewById(R.id.nome12);
         n1 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         n2 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
-        vamosmudar.setText(" jVez de " + n1);
+        vamosmudar.setText("Vez de " + n1);
 
     }
 
