@@ -26,4 +26,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="99dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:id="@+id/backtofirst"
+        android:layout_centerVertical="true"
+        android:onClick="BotaoVoltar"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

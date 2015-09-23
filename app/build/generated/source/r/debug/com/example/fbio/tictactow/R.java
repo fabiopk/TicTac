@@ -15,7 +15,7 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080015;
+        public static final int action_settings=0x7f080016;
         public static final int b11=0x7f080009;
         public static final int b12=0x7f08000b;
         public static final int b13=0x7f08000c;
@@ -25,6 +25,7 @@ public final class R {
         public static final int b31=0x7f080011;
         public static final int b32=0x7f080008;
         public static final int b33=0x7f08000f;
+        public static final int backtofirst=0x7f080015;
         public static final int iniciar=0x7f080006;
         public static final int jogador1=0x7f080002;
         public static final int jogador2=0x7f080004;
