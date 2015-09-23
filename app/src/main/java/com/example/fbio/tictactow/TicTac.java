@@ -38,7 +38,7 @@ public HashMap<Key,State> field;
         return false;
     }
 
-    public State checkForWinner(){
+   public State checkForWinner(){
         for (int x = 1; x <= 3; x++) {      //checando linhas
             Key k1 = new Key(x,1);
             Key k2 = new Key(x,2);
@@ -68,5 +68,6 @@ public HashMap<Key,State> field;
         }
 
         return State.C; //se retornar C é por que não tem ganhador.
-    }
+   }
+
 }

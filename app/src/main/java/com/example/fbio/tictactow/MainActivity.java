@@ -14,6 +14,8 @@ public class MainActivity extends Activity {
 
     public static final String EXTRA_MESSAGE = "com.example.fbio.tictactow.MESSAGE" ;
     public static final String EXTRA_MESSAGE2 = "com.example.fbio.tictactow.MESSAGE2";
+    public static final String EXTRA_MESSAGE3 = "com.example.fbio.tictactow.MESSAGE3";
+    //public static final String EXTRA_MESSAGE4 = "com.example.fbio.tictactow.MESSAGE4";
 
 
     @Override
@@ -54,6 +56,7 @@ public class MainActivity extends Activity {
         EditText enviar2 = (EditText)findViewById(R.id.nome2);
         String mensagem2 = enviar2.getText().toString();
         intent.putExtra(EXTRA_MESSAGE2, mensagem2);
+
         startActivity(intent);
     }
 

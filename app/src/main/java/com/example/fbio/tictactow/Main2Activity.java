@@ -8,10 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class Main2Activity extends Activity {
+
+
+    public static final String EXTRA_MESSAGE3 = "com.example.fbio.tictactow.MESSAGE3";
+    //private static final String EXTRA_MESSAGE4 = "com.example.fbio.tictactow.MESSAGE4";
 
     TicTac game;
     public ArrayList<Button> buttons = new ArrayList<>();
@@ -66,9 +71,35 @@ public class Main2Activity extends Activity {
         vamosmudar = (EditText) findViewById(R.id.nome12);
         n1 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         n2 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
-        vamosmudar.setText("Vez de " + n1);
+
+        vamosmudar.setText(n1);
 
     }
+
+    public void vamos(){
+
+
+        Intent intent2 = new Intent(this, Main3Activity.class);
+        EditText ganhador = (EditText) findViewById(R.id.nome12);    //passsa quem esta em nome12
+        String mensagem = ganhador.getText().toString();
+
+        intent2.putExtra(EXTRA_MESSAGE3, mensagem);
+        startActivity(intent2);
+
+    }
+
+   /* public void velha(){
+
+        Intent intent2 = new Intent(this, Main3Activity.class);
+        EditText ganhador = (EditText) findViewById(R.id.nome12);    //passsa quem esta em nome12
+        String mensagem = ganhador.getText().toString();
+
+        intent2.putExtra(EXTRA_MESSAGE4, mensagem);
+        startActivity(intent2);
+    }
+*/
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,6 +129,12 @@ public class Main2Activity extends Activity {
         int y = 1;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b11);
@@ -108,6 +145,14 @@ public class Main2Activity extends Activity {
         int y = 2;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
+
+
             refreshVez();
         }
         refreshButton(x, y, b12);
@@ -118,6 +163,12 @@ public class Main2Activity extends Activity {
         int y = 3;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+//                velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b13);
@@ -128,6 +179,12 @@ public class Main2Activity extends Activity {
         int y = 1;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b21);
@@ -138,6 +195,12 @@ public class Main2Activity extends Activity {
         int y = 2;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b22);
@@ -148,6 +211,12 @@ public class Main2Activity extends Activity {
         int y = 3;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b23);
@@ -158,6 +227,12 @@ public class Main2Activity extends Activity {
         int y = 1;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b31);
@@ -168,6 +243,12 @@ public class Main2Activity extends Activity {
         int y = 2;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b32);
@@ -178,6 +259,12 @@ public class Main2Activity extends Activity {
         int y = 3;
         if (game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            if( (game.checkForWinner()) != TicTac.State.C) {
+                vamos();
+            }
+            if(game.checkForWinner() == TicTac.State.C){
+                //velha();
+            }
             refreshVez();
         }
         refreshButton(x, y, b33);
@@ -202,7 +289,7 @@ public class Main2Activity extends Activity {
             s = n2;
         }
 
-        vamosmudar.setText("Vez de " + s);
+        vamosmudar.setText(s);
 
     }
 
@@ -210,5 +297,4 @@ public class Main2Activity extends Activity {
         if (turn == true) return TicTac.State.X;
         return TicTac.State.O;
     }
-
 }

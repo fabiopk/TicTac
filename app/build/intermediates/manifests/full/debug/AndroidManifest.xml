@@ -26,6 +26,10 @@
             android:name="com.example.fbio.tictactow.Main2Activity"
             android:label="@string/title_activity_main2" >
         </activity>
+        <activity
+            android:name="com.example.fbio.tictactow.Main3Activity"
+            android:label="@string/title_activity_main3" >
+        </activity>
     </application>
 
 </manifest>
