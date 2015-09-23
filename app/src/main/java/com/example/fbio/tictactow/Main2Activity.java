@@ -16,6 +16,7 @@ public class Main2Activity extends Activity {
 
 
     public static final String EXTRA_MESSAGE3 = "com.example.fbio.tictactow.MESSAGE3";
+    private static final String EXTRA_MESSAGE4 = "com.example.fbio.tictactow.MESSAGE4";
     //private static final String EXTRA_MESSAGE4 = "com.example.fbio.tictactow.MESSAGE4";
 
     TicTac game;
@@ -88,16 +89,12 @@ public class Main2Activity extends Activity {
 
     }
 
-   /* public void velha(){
+    public void velha(){
 
         Intent intent2 = new Intent(this, Main3Activity.class);
-        EditText ganhador = (EditText) findViewById(R.id.nome12);    //passsa quem esta em nome12
-        String mensagem = ganhador.getText().toString();
-
-        intent2.putExtra(EXTRA_MESSAGE4, mensagem);
         startActivity(intent2);
     }
-*/
+
 
 
 
@@ -133,7 +130,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
             refreshVez();
         }
@@ -149,7 +146,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
 
 
@@ -167,7 +164,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-//                velha();
+                if (game.checkForVelha())           velha();
             }
             refreshVez();
         }
@@ -183,7 +180,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
             refreshVez();
         }
@@ -199,7 +196,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
             refreshVez();
         }
@@ -215,7 +212,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
             refreshVez();
         }
@@ -231,7 +228,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
             refreshVez();
         }
@@ -247,7 +244,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
             refreshVez();
         }
@@ -263,7 +260,7 @@ public class Main2Activity extends Activity {
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
-                //velha();
+                if(game.checkForVelha()) {             velha();         }
             }
             refreshVez();
         }
@@ -296,5 +293,9 @@ public class Main2Activity extends Activity {
     public TicTac.State stateFromTurn() {
         if (turn == true) return TicTac.State.X;
         return TicTac.State.O;
+
+
     }
+
+
 }

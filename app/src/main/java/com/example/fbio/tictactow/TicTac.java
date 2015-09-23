@@ -10,7 +10,7 @@ public class TicTac {
         O,X,C               //C é clear, ou seja, ninguém marcou nada naquele lugar ainda.
     }
 
-public HashMap<Key,State> field;
+    public HashMap<Key,State> field;
 
     TicTac() {
         //constructor sem nada
@@ -31,14 +31,14 @@ public HashMap<Key,State> field;
 
     public boolean mark(int x, int y, State s) {    //Tenta marcar com X ou O uma posição. Se não estiver livre (não é C) retorna falso.
         Key k = new Key(x,y);
-            if(field.get(k).equals(State.C)) {
-                field.put(k, s);
-                return true;
-            }
+        if(field.get(k).equals(State.C)) {
+            field.put(k, s);
+            return true;
+        }
         return false;
     }
 
-   public State checkForWinner(){
+    public State checkForWinner(){
         for (int x = 1; x <= 3; x++) {      //checando linhas
             Key k1 = new Key(x,1);
             Key k2 = new Key(x,2);
@@ -68,6 +68,18 @@ public HashMap<Key,State> field;
         }
 
         return State.C; //se retornar C é por que não tem ganhador.
-   }
+    }
 
+    public boolean checkForVelha() {
+        State s;
+        for (int x = 1; x <= 3; x++) {
+            for (int y = 1; y <= 3; y++) {
+
+                s = field.get(new Key(x,y));
+                if (s.equals(State.C)) return false;
+            }
+
+        }
+        return true;
+    }
 }

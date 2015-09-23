@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class Main3Activity extends Activity {
 
     EditText vencedor;
@@ -19,11 +21,23 @@ public class Main3Activity extends Activity {
 
         vencedor = (EditText) findViewById(R.id.nomeVencedor);
 
-        Intent intent = getIntent();
+        Intent intent = null;
+        try {
+            intent = getIntent();
+        } catch (Exception e) {
+
+        }
         String v1 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE3);
+        if (v1 == null) {
+            v1 = "Deu Velha";
+            TextView tv = (TextView) findViewById(R.id.vencedor);
+            tv.setText("Ninguém Ganhou :(");
+        } else {
+            v1 = v1 +" Ganhou";
+        }
 
         EditText textView = new EditText(this);
-       vencedor.setText(v1 + " ganhou");
+        vencedor.setText(v1);
     }
 
     @Override

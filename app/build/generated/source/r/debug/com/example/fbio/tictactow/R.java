@@ -15,7 +15,7 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080016;
+        public static final int action_settings=0x7f080015;
         public static final int b11=0x7f080009;
         public static final int b12=0x7f08000b;
         public static final int b13=0x7f08000c;
@@ -35,7 +35,6 @@ public final class R {
         public static final int nome22=0x7f08000a;
         public static final int nomeVencedor=0x7f080014;
         public static final int rell=0x7f080000;
-        public static final int velhaid=0x7f080015;
         public static final int vencedor=0x7f080013;
         public static final int vezde=0x7f080012;
     }
