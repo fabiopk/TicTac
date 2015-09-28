@@ -36,35 +36,34 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Jogador 2"
-        android:id="@+id/jogador2"
-        android:layout_below="@+id/jogador1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name 2"
-        android:ems="10"
-        android:id="@+id/nome2"
-        android:layout_below="@+id/nome1"
-        android:layout_alignLeft="@+id/nome1"
-        android:layout_alignStart="@+id/nome1" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar"
         android:id="@+id/iniciar"
-        android:layout_below="@+id/nome2"
-        android:layout_centerHorizontal="true"
         android:onClick="BotaoIniciar"
-        />
+        android:layout_below="@+id/nome1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conectar"
+        android:id="@+id/conectar"
+        android:layout_alignParentTop="true"
+        android:onClick="conectar"
+        android:layout_toStartOf="@+id/nome1"
+        android:layout_marginTop="69dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ficar Visivel"
+        android:onClick="ficarVisivel"
+        android:id="@+id/ficarvisivel"
+        android:layout_alignTop="@+id/conectar"
+        android:layout_toEndOf="@+id/iniciar" />
+
 </RelativeLayout>
 <!-- From: file:/C:/Users/DENISE/Documents/GitHub/TicTac/app/src/main/res/layout/activity_main.xml -->
