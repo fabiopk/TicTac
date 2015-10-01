@@ -65,4 +65,13 @@
         android:layout_alignTop="@+id/conectar"
         android:layout_toEndOf="@+id/iniciar" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar Nome"
+        android:onClick="enviarNome"
+        android:id="@+id/enviarNome"
+        android:layout_below="@+id/nome1"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

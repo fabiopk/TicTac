@@ -3,7 +3,11 @@ package com.example.fbio.tictactow;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,11 +19,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Set;
+
 public class MainActivity extends Activity {
+
 
     public static final String EXTRA_MESSAGE = "com.example.fbio.tictactow.MESSAGE" ;
     public static final String EXTRA_MESSAGE2 = "com.example.fbio.tictactow.MESSAGE2";
     public static final String EXTRA_MESSAGE3 = "com.example.fbio.tictactow.MESSAGE3";
+    private static Context context;
+
+    public String nome2;
 
     // Códigos para troca de intent
     private static final int REQUEST_ENABLE_BT = 1;
@@ -40,13 +50,18 @@ public class MainActivity extends Activity {
     public static final int MESSAGE_WRITE = 3;
     public static final int MESSAGE_DEVICE_NAME = 4;
     public static final int MESSAGE_TOAST = 5;
+    public boolean nomeRecebido;
 
-
+    EditText enviar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button b1 = (Button)findViewById(R.id.iniciar);
+        enviar = (EditText) findViewById(R.id.nome1);
+
+        MainActivity.context = getApplicationContext();
+        nomeRecebido = false;
 
         // instancia o adaptador bluetooth do dispositivo
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -108,23 +123,35 @@ public class MainActivity extends Activity {
     }
 
     public void BotaoIniciar(View view){
-        Intent intent = new Intent(this, Main2Activity.class);
-        EditText enviar = (EditText)findViewById(R.id.nome1);
-        String mensagem = enviar.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, mensagem);
 
-        startActivity(intent);
+        if(nomeRecebido) {
+            Intent intent = new Intent(this, Main2Activity.class);
+            EditText enviar = (EditText) findViewById(R.id.nome1);
+            String mensagem = enviar.getText().toString();
+            intent.putExtra(EXTRA_MESSAGE, mensagem);
+
+            intent.putExtra(EXTRA_MESSAGE2, nome2);
+            startActivity(intent);
+        }
+    }
+
+    public void enviarNome(View view){
+        if(mBtService != null){
+            sendMessage(enviar.getText().toString());
+        }
+
     }
 
     private void setupConnection() {
 
+
         // Inicialização dos serviços relacionados à comunicação bluetooth
         mBtService = new BluetoothService(this, mHandler);
     }
-    private void sendMessage(String message) {
+    public static void sendMessage(String message) {
         // Verifica se há conexão
         if (mBtService.getState() != BluetoothService.STATE_CONNECTED) {
-            Toast.makeText(this, "Não há conexão estabelecida!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.context, "Não há conexão estabelecida!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -138,6 +165,55 @@ public class MainActivity extends Activity {
             message="";
         }
     }
+    // Método para obter as respostas das chamadas startActivityForResult()
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+
+            case REQUEST_CONNECT_DEVICE:     // Chamado qndo o usuário clica em connect no menu
+                // Quando a classe ListDevice retorna um dispositivo para se conectar
+                if (resultCode == Activity.RESULT_OK) {
+                    // Recebimento do MAC
+                    String address = data.getExtras().getString(DeviceList.EXTRA_DEVICE_ADDRESS);
+                    // Recebe o objeto do dispositivo a se conectar
+                    BluetoothDevice device = myBluetoothAdapter.getRemoteDevice(address);
+                    // Tenta estabelecer uma conexão
+                    mBtService.connect(device);
+                }
+                break;
+
+            case REQUEST_ENABLE_BT:      // Retorno da requisição de habilitar bt
+
+                if (resultCode == Activity.RESULT_OK) {
+                    // BT ligado, prepara para conexões
+                    setupConnection();
+                } else {
+                    // Caso usuário não habilite o bt, encerra o aplicativo
+                    Toast.makeText(this, "Bluetooth não ativado...", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
+        }
+    }
+
+
+    @Override
+    public synchronized void onResume() {
+        super.onResume();
+		/*
+		 * Caso o BT não tenha sido ligado no inicio,
+		 * deve ser habilitado nesse momento.
+		 * onResume() é executada após o retorno da
+		 * requisição de ativação do adaptador
+		 */
+        if (mBtService != null) {
+            // Estado NONE idica que as threads de conexão ainda não foram iniciadas
+            if (mBtService.getState() == BluetoothService.STATE_NONE) {
+                // Inicializa as threads necessárias para comunicação -> Ver BluetoothService.java
+                mBtService.start();
+            }
+        }
+    }
+
     private final Handler mHandler = new Handler() {
 
         @Override
@@ -173,8 +249,19 @@ public class MainActivity extends Activity {
                     String readMessage = new String(readBuf, 0, msg.arg1);
 
                     // Coloca a mensagem recebida no text view
-                   // msgTextView.setText(readMessage);
+                    if(!nomeRecebido) {
+                        Toast.makeText(getBaseContext(), "Seu oponente: " + readMessage, Toast.LENGTH_SHORT).show();
+                        nome2 = readMessage;
+                        nomeRecebido = true;
+                    }
+                    else if (readMessage.length() <= 4 ){
+                        String[] parts = readMessage.split(" ");
+                        int x = Integer.parseInt(parts[0]);
+                        int y = Integer.parseInt(parts[1]);
+                        Main2Activity.markB(x,y);                    }
+
                     break;
+
 
                 case MESSAGE_DEVICE_NAME:       // Se está recebendo o nome do dispositivo
                     mConnectedDeviceName = msg.getData().getString(DEVICE_NAME);

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,20 +20,13 @@ public class Main2Activity extends Activity {
     private static final String EXTRA_MESSAGE4 = "com.example.fbio.tictactow.MESSAGE4";
     //private static final String EXTRA_MESSAGE4 = "com.example.fbio.tictactow.MESSAGE4";
 
-    TicTac game;
+    static TicTac game;
     public ArrayList<Button> buttons = new ArrayList<>();
-    String n1, n2;
-    EditText vamosmudar;
-    Button b11;
-    Button b12;
-    Button b13;
-    Button b21;
-    Button b22;
-    Button b23;
-    Button b31;
-    Button b32;
-    Button b33;
-    private boolean turn;
+    static String n1;
+    static String n2;
+    static EditText vamosmudar;
+    static Button b11, b12, b13, b21, b22, b23, b31, b32, b33;
+    private static boolean turn;
 
 
     @Override
@@ -42,7 +36,7 @@ public class Main2Activity extends Activity {
 
         game = new TicTac();
 
-        turn = false;
+
         b11 = (Button) findViewById(R.id.b11);
         b12 = (Button) findViewById(R.id.b12);
         b13 = (Button) findViewById(R.id.b13);
@@ -73,7 +67,16 @@ public class Main2Activity extends Activity {
         n1 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         n2 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
 
-        vamosmudar.setText(n1);
+        if(n1.compareTo(n2) > 0){
+            Toast.makeText(this, "MAIORR!", Toast.LENGTH_SHORT).show();
+            turn = true;
+        }
+        else {
+            Toast.makeText(this, "menor", Toast.LENGTH_SHORT).show();
+        turn = false;
+        }
+
+        refreshVez();
 
     }
 
@@ -94,9 +97,6 @@ public class Main2Activity extends Activity {
         Intent intent2 = new Intent(this, Main3Activity.class);
         startActivity(intent2);
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -120,13 +120,36 @@ public class Main2Activity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static void markB(int x, int y){
+        game.mark(x, y, stateFromTurn());
+        if(x ==1 && y ==1) refreshButton(x, y, b11);
+        if(x ==1 && y ==2) refreshButton(x, y, b12);
+        if(x ==1 && y ==3) refreshButton(x, y, b13);
+        if(x ==2 && y ==1) refreshButton(x, y, b21);
+        if(x ==2 && y ==2) refreshButton(x, y, b22);
+        if(x ==2 && y ==3) refreshButton(x, y, b23);
+        if(x ==3 && y ==1) refreshButton(x, y, b31);
+        if(x ==3 && y ==2) refreshButton(x, y, b32);
+        if(x ==3 && y ==3) refreshButton(x, y, b33);
+
+        refreshVez();
+        if( (game.checkForWinner()) != TicTac.State.C) {
+            //vamos();
+        }
+
+        turn = !turn;
+
+    }
 
     public void Click11(View view) {
         int x = 1;
         int y = 1;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
+
                 vamos();
             }
             if(game.checkForWinner() == TicTac.State.C){
@@ -140,8 +163,10 @@ public class Main2Activity extends Activity {
     public void Click12(View view) {
         int x = 1;
         int y = 2;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -158,8 +183,10 @@ public class Main2Activity extends Activity {
     public void Click13(View view) {
         int x = 1;
         int y = 3;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -174,8 +201,10 @@ public class Main2Activity extends Activity {
     public void Click21(View view) {
         int x = 2;
         int y = 1;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -190,8 +219,10 @@ public class Main2Activity extends Activity {
     public void Click22(View view) {
         int x = 2;
         int y = 2;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -206,8 +237,11 @@ public class Main2Activity extends Activity {
     public void Click23(View view) {
         int x = 2;
         int y = 3;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
+
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -222,8 +256,12 @@ public class Main2Activity extends Activity {
     public void Click31(View view) {
         int x = 3;
         int y = 1;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
+
+
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -238,8 +276,10 @@ public class Main2Activity extends Activity {
     public void Click32(View view) {
         int x = 3;
         int y = 2;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -254,8 +294,10 @@ public class Main2Activity extends Activity {
     public void Click33(View view) {
         int x = 3;
         int y = 3;
-        if (game.mark(x, y, stateFromTurn())) {
+        if (turn && game.mark(x, y, stateFromTurn())) {
             turn = !turn;
+            MainActivity.sendMessage(String.valueOf(x) + " " + String.valueOf(y));
+            Toast.makeText(getApplicationContext(),String.valueOf(x) + " " + String.valueOf(y),Toast.LENGTH_SHORT);
             if( (game.checkForWinner()) != TicTac.State.C) {
                 vamos();
             }
@@ -267,7 +309,7 @@ public class Main2Activity extends Activity {
         refreshButton(x, y, b33);
     }
 
-    public void refreshButton(int x, int y, Button b) {
+    public  static void refreshButton(int x, int y, Button b) {
         TicTac.State s = game.field.get(new Key(x, y));
         if (s.equals(TicTac.State.C)) {
             b.setText(" ");
@@ -278,7 +320,7 @@ public class Main2Activity extends Activity {
         }
     }
 
-    public void refreshVez(){
+    public static void refreshVez(){
         String s;
         if (!turn) {
             s = n1;
@@ -290,7 +332,8 @@ public class Main2Activity extends Activity {
 
     }
 
-    public TicTac.State stateFromTurn() {
+    public static TicTac.State stateFromTurn() {
+
         if (turn == true) return TicTac.State.X;
         return TicTac.State.O;
 
