@@ -349,6 +349,7 @@ public class Main2Activity extends Activity {
         String mensagem = (n2);
 
         intent2.putExtra(EXTRA_MESSAGE3, mensagem);
+        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context2.startActivity(intent2);
     }
 }
