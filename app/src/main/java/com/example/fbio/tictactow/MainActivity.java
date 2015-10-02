@@ -254,14 +254,14 @@ public class MainActivity extends Activity {
                         nome2 = readMessage;
                         nomeRecebido = true;
                     }
+                    else if(readMessage.equals("###")){
+                        Main2Activity.vamos2(context);
+                    }
                     else if (readMessage.length() <= 4 ){
                         String[] parts = readMessage.split(" ");
                         int x = Integer.parseInt(parts[0]);
                         int y = Integer.parseInt(parts[1]);
                         Main2Activity.markB(x,y);                    }
-                    else if(readMessage.equals("##########")){
-                        Main2Activity.vamos2(context);
-                    }
 
                     break;
 

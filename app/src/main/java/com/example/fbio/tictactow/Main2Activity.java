@@ -88,7 +88,7 @@ public class Main2Activity extends Activity {
         EditText ganhador = (EditText) findViewById(R.id.nome12);    //passsa quem esta em nome12
         String mensagem = ganhador.getText().toString();
 
-        MainActivity.sendMessage("##########");
+        MainActivity.sendMessage("###");
 
         intent2.putExtra(EXTRA_MESSAGE3, mensagem);
         startActivity(intent2);
@@ -348,6 +348,6 @@ public class Main2Activity extends Activity {
         String mensagem = (n2);
 
         intent2.putExtra(EXTRA_MESSAGE3, mensagem);
-          context.startActivity(intent2);
+        context.startActivity(intent2);
     }
 }
