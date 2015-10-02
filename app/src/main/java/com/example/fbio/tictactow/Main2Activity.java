@@ -352,4 +352,14 @@ public class Main2Activity extends Activity {
         intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context2.startActivity(intent2);
     }
+
+    public static void vamos3() {
+
+        Intent intent2 = new Intent(context2, Main3Activity.class);
+        String mensagem = null;
+
+        intent2.putExtra(EXTRA_MESSAGE3, mensagem);
+        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context2.startActivity(intent2);
+    }
 }

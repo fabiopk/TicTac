@@ -257,6 +257,9 @@ public class MainActivity extends Activity {
                     else if(readMessage.equals("###")){
                         Main2Activity.vamos2();
                     }
+                    else if(readMessage.equals("@@@")){
+                        Main2Activity.vamos3();
+                    }
                     else if (readMessage.length() <= 4 ){
                         String[] parts = readMessage.split(" ");
                         int x = Integer.parseInt(parts[0]);

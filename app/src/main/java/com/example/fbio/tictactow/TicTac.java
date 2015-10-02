@@ -79,6 +79,7 @@ public class TicTac {
                 if (s.equals(State.C)) return false;
             }
         }
+        MainActivity.sendMessage("@@@");
         return true;
     }
 }
