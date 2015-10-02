@@ -24,7 +24,6 @@ public class TicTac {
             for (int y = 1; y <= 3; y++) {
                 k = new Key(x, y);
                 field.put(k, State.C);
-                //oie denisa
             }
 
         }

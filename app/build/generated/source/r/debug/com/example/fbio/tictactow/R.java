@@ -15,35 +15,39 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
-        public static final int b11=0x7f08000a;
-        public static final int b12=0x7f08000c;
-        public static final int b13=0x7f08000d;
-        public static final int b21=0x7f08000f;
-        public static final int b22=0x7f08000e;
-        public static final int b23=0x7f080011;
-        public static final int b31=0x7f080012;
-        public static final int b32=0x7f080009;
-        public static final int b33=0x7f080010;
-        public static final int backtofirst=0x7f080016;
-        public static final int conectar=0x7f080005;
-        public static final int enviarNome=0x7f080007;
-        public static final int ficarvisivel=0x7f080006;
-        public static final int iniciar=0x7f080004;
-        public static final int jogador1=0x7f080002;
-        public static final int nome=0x7f080001;
-        public static final int nome1=0x7f080003;
-        public static final int nome12=0x7f080008;
-        public static final int nome22=0x7f08000b;
-        public static final int nomeVencedor=0x7f080015;
-        public static final int rell=0x7f080000;
-        public static final int vencedor=0x7f080014;
-        public static final int vezde=0x7f080013;
+        public static final int action_settings=0x7f08001a;
+        public static final int b11=0x7f08000d;
+        public static final int b12=0x7f08000f;
+        public static final int b13=0x7f080010;
+        public static final int b21=0x7f080012;
+        public static final int b22=0x7f080011;
+        public static final int b23=0x7f080014;
+        public static final int b31=0x7f080015;
+        public static final int b32=0x7f08000c;
+        public static final int b33=0x7f080013;
+        public static final int backtofirst=0x7f080019;
+        public static final int button_scan=0x7f080002;
+        public static final int conectar=0x7f080008;
+        public static final int enviarNome=0x7f08000a;
+        public static final int ficarvisivel=0x7f080009;
+        public static final int iniciar=0x7f080007;
+        public static final int jogador1=0x7f080005;
+        public static final int new_devices=0x7f080001;
+        public static final int nome=0x7f080004;
+        public static final int nome1=0x7f080006;
+        public static final int nome12=0x7f08000b;
+        public static final int nome22=0x7f08000e;
+        public static final int nomeVencedor=0x7f080018;
+        public static final int paired_devices=0x7f080000;
+        public static final int rell=0x7f080003;
+        public static final int vencedor=0x7f080017;
+        public static final int vezde=0x7f080016;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_main2=0x7f030001;
-        public static final int activity_main3=0x7f030002;
+        public static final int activity_device_list=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_main2=0x7f030002;
+        public static final int activity_main3=0x7f030003;
     }
     public static final class menu {
         public static final int menu_main=0x7f070000;
