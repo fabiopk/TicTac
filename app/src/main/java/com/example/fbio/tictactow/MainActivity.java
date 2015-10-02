@@ -255,7 +255,7 @@ public class MainActivity extends Activity {
                         nomeRecebido = true;
                     }
                     else if(readMessage.equals("###")){
-                        Main2Activity.vamos2(context);
+                        Main2Activity.vamos2();
                     }
                     else if (readMessage.length() <= 4 ){
                         String[] parts = readMessage.split(" ");

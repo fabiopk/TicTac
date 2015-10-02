@@ -28,6 +28,7 @@ public class Main2Activity extends Activity {
     static EditText vamosmudar;
     static Button b11, b12, b13, b21, b22, b23, b31, b32, b33;
     private static boolean turn;
+    private static Context context2;
 
 
     @Override
@@ -36,7 +37,6 @@ public class Main2Activity extends Activity {
         setContentView(R.layout.activity_main2);
 
         game = new TicTac();
-
 
         b11 = (Button) findViewById(R.id.b11);
         b12 = (Button) findViewById(R.id.b12);
@@ -67,6 +67,7 @@ public class Main2Activity extends Activity {
         vamosmudar = (EditText) findViewById(R.id.nome12);
         n1 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         n2 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
+        Main2Activity.context2 = getApplicationContext();
 
         if(n1.compareTo(n2) > 0){
             Toast.makeText(this, "Primeiro", Toast.LENGTH_SHORT).show();
@@ -342,12 +343,12 @@ public class Main2Activity extends Activity {
 
     }
 
-    public static void vamos2(Context context) {
+    public static void vamos2() {
 
-        Intent intent2 = new Intent(context, Main3Activity.class);
+        Intent intent2 = new Intent(context2, Main3Activity.class);
         String mensagem = (n2);
 
         intent2.putExtra(EXTRA_MESSAGE3, mensagem);
-        context.startActivity(intent2);
+        context2.startActivity(intent2);
     }
 }
