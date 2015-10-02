@@ -327,9 +327,9 @@ public class Main2Activity extends Activity {
     public static void refreshVez(){
         String s;
         if (!turn) {
-            s = n1;
-        }else{
             s = n2;
+        }else{
+            s = n1;
         }
 
         vamosmudar.setText(s);
