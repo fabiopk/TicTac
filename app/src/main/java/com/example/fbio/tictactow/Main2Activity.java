@@ -1,6 +1,7 @@
 package com.example.fbio.tictactow;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -86,6 +87,8 @@ public class Main2Activity extends Activity {
         Intent intent2 = new Intent(this, Main3Activity.class);
         EditText ganhador = (EditText) findViewById(R.id.nome12);    //passsa quem esta em nome12
         String mensagem = ganhador.getText().toString();
+
+        MainActivity.sendMessage("##########");
 
         intent2.putExtra(EXTRA_MESSAGE3, mensagem);
         startActivity(intent2);
@@ -337,8 +340,14 @@ public class Main2Activity extends Activity {
         if (turn == true) return TicTac.State.X;
         return TicTac.State.O;
 
-
     }
 
+    public static void vamos2(Context context) {
 
+        Intent intent2 = new Intent(context, Main3Activity.class);
+        String mensagem = (n2);
+
+        intent2.putExtra(EXTRA_MESSAGE3, mensagem);
+          context.startActivity(intent2);
+    }
 }

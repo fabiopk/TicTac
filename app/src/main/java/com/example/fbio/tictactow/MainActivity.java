@@ -259,6 +259,9 @@ public class MainActivity extends Activity {
                         int x = Integer.parseInt(parts[0]);
                         int y = Integer.parseInt(parts[1]);
                         Main2Activity.markB(x,y);                    }
+                    else if(readMessage.equals("##########")){
+                        Main2Activity.vamos2(context);
+                    }
 
                     break;
 

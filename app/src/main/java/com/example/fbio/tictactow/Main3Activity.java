@@ -22,6 +22,8 @@ public class Main3Activity extends Activity {
 
         vencedor = (EditText) findViewById(R.id.nomeVencedor);
 
+
+
         Intent intent = null;
         try {
             intent = getIntent();
@@ -36,7 +38,6 @@ public class Main3Activity extends Activity {
         } else {
             v1 = v1 +" Ganhou";
         }
-
         EditText textView = new EditText(this);
         vencedor.setText(v1);
     }
