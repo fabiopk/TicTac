@@ -68,6 +68,7 @@ public class Main3Activity extends Activity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
+        MainActivity.clearVar();
     }
 
 }

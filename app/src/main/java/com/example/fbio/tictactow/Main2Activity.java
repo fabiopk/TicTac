@@ -69,7 +69,8 @@ public class Main2Activity extends Activity {
         n2 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
         Main2Activity.context2 = getApplicationContext();
 
-        if(n1.compareTo(n2) > 0){
+        int compar = n1.compareTo(n2);
+        if(compar > 0){
             Toast.makeText(this, "Primeiro", Toast.LENGTH_SHORT).show();
             turn = true;
         }
@@ -361,5 +362,11 @@ public class Main2Activity extends Activity {
         intent2.putExtra(EXTRA_MESSAGE3, mensagem);
         intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context2.startActivity(intent2);
+    }
+
+    public static void clearVar() {
+        n1 = null;
+        n2 = null;
+        game = null;
     }
 }

@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
     public static final int MESSAGE_WRITE = 3;
     public static final int MESSAGE_DEVICE_NAME = 4;
     public static final int MESSAGE_TOAST = 5;
-    public boolean nomeRecebido;
+    public static boolean nomeRecebido;
 
     EditText enviar;
     @Override
@@ -282,4 +282,9 @@ public class MainActivity extends Activity {
             }
         }
     };
+
+    public static void clearVar() {
+        nomeRecebido = false;
+        Main2Activity.clearVar();
+    }
 }
