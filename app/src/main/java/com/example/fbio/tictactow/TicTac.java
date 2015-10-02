@@ -78,7 +78,6 @@ public class TicTac {
                 s = field.get(new Key(x,y));
                 if (s.equals(State.C)) return false;
             }
-
         }
         return true;
     }

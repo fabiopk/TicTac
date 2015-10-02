@@ -68,11 +68,11 @@ public class Main2Activity extends Activity {
         n2 = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
 
         if(n1.compareTo(n2) > 0){
-            Toast.makeText(this, "MAIORR!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Primeiro", Toast.LENGTH_SHORT).show();
             turn = true;
         }
         else {
-            Toast.makeText(this, "menor", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Segundo", Toast.LENGTH_SHORT).show();
         turn = false;
         }
 
