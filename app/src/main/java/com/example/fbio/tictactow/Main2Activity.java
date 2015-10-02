@@ -136,12 +136,12 @@ public class Main2Activity extends Activity {
         if(x ==3 && y ==2) refreshButton(x, y, b32);
         if(x ==3 && y ==3) refreshButton(x, y, b33);
 
+        turn = !turn;
         refreshVez();
         if( (game.checkForWinner()) != TicTac.State.C) {
             //vamos();
         }
 
-        turn = !turn;
 
     }
 
